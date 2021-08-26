@@ -13,8 +13,20 @@ p#kanjiOyaji {
 
 ul#onkunList {
     margin-top: 0;
+    list-style-type: none;
+    margin-top: 2rem;
+    margin-right: 25em;
 } 
+li#yomulist {
+    width: 220px;
+}
+
+p#imi {
+    margin-top: 10px;
+    width: 220px;
+}
+
 p.onkunYomi {
     width: 85%;
-    margin-right: 0;
+    margin-top: 0;
 }

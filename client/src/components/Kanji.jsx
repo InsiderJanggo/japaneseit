@@ -6,9 +6,10 @@ import {
     useParams
 } from "react-router-dom";
 import onyomi from '../assets/icon_on.png'
+import kunyomi from '../assets/icon_kun.png'
 import Header from './Header';
 
-export default function Kanji({ title }) {
+export default function Kanji() {
     let { id } = useParams();
     const [kanji, setKanji] = useState({})
 
@@ -35,11 +36,20 @@ export default function Kanji({ title }) {
                     <p id="kanjiOyaji" itemID={kanji.id} className="txtColorRed">
                         {kanji.kanji}
                     </p>
+                    <p id="imi">
+                        意味：{kanji.meaning}
+                    </p>
                     <ul id="onkunList">
-                        <li>
-                            <img src={onyomi} alt="onyomi-img" width={50} height={50} />
+                        <li id="yomulist">
                             <p className="onKunYomi txtColorRed">
+                                <img src={onyomi} alt="onyomi-img" width={50} height={50} />
                                 {kanji.onyomi}
+                            </p>
+                        </li>
+                        <li id="yomulist">
+                            <p className="onKunYomi txtColorRed">
+                                <img src={kunyomi} alt="kunyomi-img" width={50} height={50} />
+                                {kanji.kunyomi}
                             </p>
                         </li>
                     </ul>

@@ -3,7 +3,10 @@ const helmet = require("helmet");
 const { NotFound, errorHandler } = require("./utils/middlewares");
 const cors = require('cors')
 const app = express();
+var session = require('express-session')
 const morgan = require('morgan')
+var fileUpload = require('express-fileupload')
+require('dotenv').config();
 
 const corsOptions = {
     origin: ["http://localhost:3000"],
@@ -17,6 +20,12 @@ app.use(morgan('tiny'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 
+app.use(session({
+    secret: process.env.TOKEN,
+    resave: false,
+    saveUninitialized: true,
+}))
+app.use(fileUpload());
 
 app.get('/', (req, res) => {
     res.json({

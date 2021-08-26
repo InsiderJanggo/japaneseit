@@ -15,8 +15,12 @@ export default function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/">ホーム</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
                 </Nav>
+                </Navbar.Collapse>
+                <Navbar.Collapse className="justify-content-end">
+                <Navbar.Text>
+                    <a href="/login">ログイン</a>
+                </Navbar.Text>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

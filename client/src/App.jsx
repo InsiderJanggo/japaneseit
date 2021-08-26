@@ -7,6 +7,7 @@ import {
 } from "react-router-dom"; 
 import Home from './components/Home'
 import Kanji from './components/Kanji';
+import Login from './components/Login';
 
 function App() {
   
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/kanji/:id">
                 <Kanji />
+            </Route>
+            <Route path="/login">
+                <Login />
             </Route>
             </Switch>
         </Router>
