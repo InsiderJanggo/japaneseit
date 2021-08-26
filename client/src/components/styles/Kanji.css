@@ -1,0 +1,20 @@
+p#kanjiOyaji {
+    font-size: 1109%;
+    float: left;
+    line-height: 1em;
+    letter-spacing: 0;
+    width: 220px;
+    text-align: center;
+    margin-top: 10px;
+}
+.txtColorRed, .txtColorRed a {
+    color: #e4007f;
+}
+
+ul#onkunList {
+    margin-top: 0;
+} 
+p.onkunYomi {
+    width: 85%;
+    margin-right: 0;
+}

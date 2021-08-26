@@ -1,0 +1,43 @@
+#contentsTopIndexArea #aiueoListInner {
+    margin-top: 100px;
+    font-family: 'Kaisei Tokumin';
+}
+.cf {
+    zoom: 1;
+    overflow: hidden;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li.bdTopLine {
+    border-top: 1px solid #a3a3a3;
+    list-style-type: none;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li {
+    float: left;
+    width: 148px;
+    margin-left: 55px;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li a span.kanji {
+    font-size: 271%;
+    margin-top: 20px;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li a span {
+    display: block;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: #000000;
+}
+
+a:link {
+    outline: none;
+}
+
+a:link {
+    color: #000000;
+}
