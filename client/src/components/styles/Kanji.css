@@ -7,6 +7,15 @@ p#kanjiOyaji {
     text-align: center;
     margin-top: 10px;
 }
+p.Chiyaji {
+    font-size: 100%;
+    float: left;
+    line-height: 1em;
+    letter-spacing: 0;
+    width: 220px;
+    text-align: center;
+    margin-top: 10px;
+}
 .txtColorRed, .txtColorRed a {
     color: #e4007f;
 }

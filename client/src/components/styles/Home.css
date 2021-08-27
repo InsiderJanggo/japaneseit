@@ -4,6 +4,7 @@
 }
 .cf {
     zoom: 1;
+    width: auto;
     overflow: hidden;
 }
 

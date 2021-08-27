@@ -8,6 +8,7 @@ import {
 import Home from './components/Home'
 import Kanji from './components/Kanji';
 import Login from './components/Login';
+import Register from './components/Register';
 import User from './components/User/User'
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
             </Route> 
             <Route path="/user/:username">
                 <User />
+            </Route>
+            <Route path="/register">
+                <Register />
             </Route>
             <Route path="/login">
                 <Login />

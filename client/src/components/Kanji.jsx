@@ -36,7 +36,7 @@ export default function Kanji() {
                     <p id="kanjiOyaji" itemID={kanji.id} className="txtColorRed">
                         {kanji.kanji}
                     </p>
-                    <p id="imi">
+                    <p id="imi" className="Chiyaji">
                         意味：{kanji.meaning}
                     </p>
                     <ul id="onkunList">
