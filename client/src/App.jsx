@@ -8,6 +8,7 @@ import {
 import Home from './components/Home'
 import Kanji from './components/Kanji';
 import Login from './components/Login';
+import User from './components/User/User'
 
 function App() {
   
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/kanji/:id">
                 <Kanji />
+            </Route> 
+            <Route path="/user/:username">
+                <User />
             </Route>
             <Route path="/login">
                 <Login />
