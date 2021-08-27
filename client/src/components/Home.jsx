@@ -3,8 +3,8 @@ import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
 import './styles/Home.css'
-import { Form, FormControl, Container } from 'react-bootstrap'
 import '../../node_modules/bulma/css/bulma.min.css'
+import kanjiIcon from '../assets/kanji.png'
 
 export default function Home() {
     const [kanjis, setKanjis] = useState([]);
@@ -54,6 +54,11 @@ export default function Home() {
                                                     </form>
                                             </div>
                                         </div>
+                                </div>
+                                <div className="column">
+                                    <div id="kanji-logo">
+                                        <img src={kanjiIcon} alt="kanji-logo-irasuto" />
+                                    </div>
                                 </div>
                             </div>
                     </Container>

@@ -76,6 +76,16 @@ input {
     text-transform: uppercase;
 }
 
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+img, video {
+    height: auto;
+    max-width: 100%;
+}
+
 button, a {
     cursor: pointer;
 }
