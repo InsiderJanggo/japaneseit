@@ -26,3 +26,4 @@ npm i --save
 
 ### 他の言語
 [English](https://github.com/InsiderJanggo/japaneseit/blob/main/README.md)
+[インドネシア語](https://github.com/InsiderJanggo/japaneseit/blob/main/Readme/id.md)
