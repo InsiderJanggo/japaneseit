@@ -32,7 +32,7 @@ export default function Home() {
                             <li className="bdTopLine ml0" key={index}>
                                 <a href={"/kanji/" + text.id} style={{ height: "119px" }}>
                                       <span className="hiragana">
-                                           {text.reading}
+                                           読み方:{text.reading}
                                       </span>
                                       <span className="kanji">
                                         {text.kanji}

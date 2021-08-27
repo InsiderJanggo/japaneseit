@@ -6,11 +6,14 @@ var styles = {
     fontFamily: 'Kaisei Tokumin'
 }
 
-export default function Header() {
+export default function Header({ user }) {
+    var data = localStorage.getItem('user');
+    var user = JSON.parse(data);
+
     return(
         <Navbar style={styles} bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">漢字辞書</Navbar.Brand>
+                <Navbar.Brand href="/">漢字辞書</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -19,7 +22,13 @@ export default function Header() {
                 </Navbar.Collapse>
                 <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text>
-                    <a href="/login">ログイン</a>
+                    {user ? 
+                    <>  
+                        <span>{user.username}さん，<a href="http://localhost:5000/auth/logout">ログアウト</a></span> 
+                    </>
+                    : 
+                        <a href="/login">ログイン</a>
+                    }
                 </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

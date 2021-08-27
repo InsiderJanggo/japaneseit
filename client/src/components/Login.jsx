@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Form, Button, Container} from 'react-bootstrap'
 import axios from 'axios'
+//import Header from './Header';
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -35,6 +36,13 @@ export default function Login() {
                     setLoginStatus(res.data.message);
                 } else {
                     setLoginStatus(response.data[0]);
+                    var users = {
+                        id: response.data[0].id,
+                        username: response.data[0].username,
+                        email: response.data[0].email,
+                        avatar: response.data[0].avatar
+                    }
+                    localStorage.setItem('user', JSON.stringify(users));
                 }
             })
             .catch((err) => {
@@ -55,7 +63,7 @@ export default function Login() {
 
     return(
        <>
-           <Container>
+           <Container>      
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicUsername">
                     <div style={{ fontSize: '12px', color: 'red' }}>
