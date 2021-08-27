@@ -41,7 +41,7 @@ export default function Kanji() {
                     </p>
                     <ul id="onkunList">
                         <li id="yomulist">
-                            <p className="onKunYomi txtColorRed">
+                            <p className="onKunYomi">
                                 <img src={onyomi} alt="onyomi-img" width={50} height={50} />
                                 {kanji.onyomi}
                             </p>

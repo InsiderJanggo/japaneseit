@@ -1,3 +1,4 @@
+
 p#kanjiOyaji {
     font-size: 1109%;
     float: left;
@@ -6,7 +7,10 @@ p#kanjiOyaji {
     width: 220px;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 1rem;
+    font-family: 'Kaisei Tokumin';
 }
+
 p.Chiyaji {
     font-size: 100%;
     float: left;
@@ -25,6 +29,7 @@ ul#onkunList {
     list-style-type: none;
     margin-top: 2rem;
     margin-right: 25em;
+    font-family: 'Kaisei Tokumin';
 } 
 li#yomulist {
     width: 220px;

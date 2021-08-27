@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import {Form, Button, Container} from 'react-bootstrap'
 import axios from 'axios'
-//import Header from './Header';
+import Header from './Header';
 
 export default function Login() {
+    const [loginStatus, setLoginStatus] = useState();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     var [usernameError, setUsernameError] = useState()
     var [passwordError, setPasswordError] = useState()
-    const [loginStatus, setLoginStatus] = useState();
+   
 
     axios.defaults.withCredentials = true;
 
@@ -23,9 +24,9 @@ export default function Login() {
         return true
     }
 
-    // if(loginStatus) {
-    //     return <Header user={loginStatus} />
-    // }
+    if(loginStatus) {
+        return <Header user={loginStatus} />
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,13 +41,13 @@ export default function Login() {
                     setLoginStatus(res.data.message);
                 } else {
                     setLoginStatus(res.data[0]);
-                    var users = {
-                        id: res.data[0].id,
-                        username: res.data[0].username,
-                        email: res.data[0].email,
-                        avatar: res.data[0].avatar
-                    }
-                    localStorage.setItem('user', JSON.stringify(users));
+                    // var users = {
+                    //     id: res.data[0].id,
+                    //     username: res.data[0].username,
+                    //     email: res.data[0].email,
+                    //     avatar: res.data[0].avatar
+                    // }
+                    // localStorage.setItem('user', JSON.stringify(users));
                 }
             })
             .catch((err) => {
@@ -58,7 +59,7 @@ export default function Login() {
     useEffect(() => {
         axios.get('http://localhost:5000/auth')
         .then((res) => {
-            setLoginStatus(res.data.user[0]);
+            setLoginStatus(res.data[0]);
         })
         .catch((err) => {
             console.error(err)

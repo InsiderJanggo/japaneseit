@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useMemo} from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
 import './styles/Home.css'
+import { Form, FormControl, Container } from 'react-bootstrap'
+import '../../node_modules/bulma/css/bulma.min.css'
 
 export default function Home() {
     const [kanjis, setKanjis] = useState([]);
+    const [value, setValue] = useState("")
 
     const listAll = () => {
         axios.get('http://localhost:5000/api/kanji')
@@ -17,6 +20,16 @@ export default function Home() {
         })
     }
 
+    /**
+     * 
+     * @param {Array} rows 
+     * @param {String} filterKeys 
+     * @returns 
+     */
+   const searchKanji = (rows, filterKeys) => {
+        return rows.filter((row) => JSON.stringify(row).includes(filterKeys));
+   }
+
     useEffect(() => {
         listAll();
     }, [])
@@ -24,11 +37,33 @@ export default function Home() {
     return(
         <>
             <Header />
-            
+            <section id="home-page">
+                <header>
+                    <Container>
+                            <div className="columns reverse-row-order  p-2">
+                                <div className="column is-8">
+                                        <h1>漢字を探す</h1>
+                                        <h2>ここに漢字を探すことがあります</h2>
+                                        <div className="relative search-wrapper" style={{ maxWidth: '640px' }}>
+                                            <div className="input-with-btn">
+                                                    <form onSubmit={searchKanji}>
+                                                        <input type="search" autoComplete="off" placeholder="検索" value={value} onChange={(e) => setValue(e.target.value)}/>
+                                                        <button aria-label="search">
+                                                                <i className="search icon"></i>           
+                                                        </button>
+                                                    </form>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                    </Container>
+                </header>
+            </section>
+
                 <div id="contentsTopIndexArea">
                     <div id="aiueoListInner">
                         <ul className="cf">
-                        {kanjis.map((text, index) => (
+                        {searchKanji(kanjis, value).map((text, index) => (
                             <li className="bdTopLine ml0" key={index}>
                                 <a href={"/kanji/" + text.id} style={{ height: "119px" }}>
                                       <span className="hiragana">
@@ -40,6 +75,7 @@ export default function Home() {
                                 </a>
                             </li>
                          ))}
+                         
                         </ul>
                     </div>
                 </div>
