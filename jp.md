@@ -6,12 +6,12 @@
 
 [Nodejs](https://nodejs.org)と[MySQL](https://www.mysql.com)を必ずインストールしてください。
 
-for the server
+サーバーのインストール方法したがこちら
 ```bash
 cd server
 npm i --save
 ```
-for the client
+クライアントのインストール方法したがこちら
 ```bash
 cd client
 npm i --save
