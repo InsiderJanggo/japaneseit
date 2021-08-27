@@ -26,3 +26,4 @@ Please make sure to update tests as appropriate.
 
 ### Other languages: 
 [日本語](https://github.com/InsiderJanggo/japaneseit/blob/main/Readme/jp.md)
+[Bahasa Indonesia](https://github.com/InsiderJanggo/japaneseit/blob/main/Readme/id.md)
