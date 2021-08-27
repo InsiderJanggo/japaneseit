@@ -6,7 +6,7 @@ var styles = {
     fontFamily: 'Kaisei Tokumin'
 }
 
-export default function Header({ user }) {
+export default function Header() {
     var data = localStorage.getItem('user');
     var user = JSON.parse(data);
 
@@ -24,10 +24,12 @@ export default function Header({ user }) {
                 <Navbar.Text>
                     {user ? 
                     <>  
-                        <span>{user.username}さん，<a href="http://localhost:5000/auth/logout">ログアウト</a></span> 
+                            <span>{user.username}さん，<a href="http://localhost:5000/auth/logout">ログアウト</a></span> 
                     </>
                     : 
-                        <a href="/login">ログイン</a>
+                    <>
+                            <a href="/login">ログイン</a>
+                    </>
                     }
                 </Navbar.Text>
                 </Navbar.Collapse>

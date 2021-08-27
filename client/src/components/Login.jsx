@@ -23,6 +23,10 @@ export default function Login() {
         return true
     }
 
+    // if(loginStatus) {
+    //     return <Header user={loginStatus} />
+    // }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const isValid = validate();
@@ -35,12 +39,12 @@ export default function Login() {
                 if (res.data.message) {
                     setLoginStatus(res.data.message);
                 } else {
-                    setLoginStatus(response.data[0]);
+                    setLoginStatus(res.data[0]);
                     var users = {
-                        id: response.data[0].id,
-                        username: response.data[0].username,
-                        email: response.data[0].email,
-                        avatar: response.data[0].avatar
+                        id: res.data[0].id,
+                        username: res.data[0].username,
+                        email: res.data[0].email,
+                        avatar: res.data[0].avatar
                     }
                     localStorage.setItem('user', JSON.stringify(users));
                 }
