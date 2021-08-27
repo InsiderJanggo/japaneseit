@@ -25,4 +25,4 @@ Please make sure to update tests as appropriate.
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ### Other languages: 
-[日本語](https://github.com/InsiderJanggo/japaneseit/blob/main/jp.md)
+[日本語](https://github.com/InsiderJanggo/japaneseit/blob/main/Readme/jp.md)
