@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
             if(hash) {
                 db.query(query, [username, email, hash], (err, results) => {
                     if(err) throw err;
-                    res.json(results);
+                    res.send(results);
                 })
             }
         })
