@@ -6,7 +6,7 @@ import {
 import {
     Container
 } from 'react-bootstrap'
-import usericon from './img/default.png'
+import Header from '../Header'
 
 
 export default function User() {
@@ -30,6 +30,7 @@ export default function User() {
 
     return(
         <>
+        <Header />
             <Container>
                 <div id="user-profile">
                     <img src={"/src/components/User/img/" + user.avatar} alt={user.id + "-avatar"} width={200} height={200} />

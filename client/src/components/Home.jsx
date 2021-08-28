@@ -22,7 +22,17 @@ export default function Home() {
     }
 
     /**
-     * 
+     * const getFilteredRows = (rows: any[], filterKey: string) => {
+            return rows.filter((row: any) => {
+                return Object.values(row).some((s) =>
+                ("" + s).toLowerCase().includes(filterKey)
+                );
+            });
+        };
+     */
+
+
+    /**
      * @param {Array} rows 
      * @param {String} filterKeys 
      * @returns 
@@ -49,9 +59,9 @@ export default function Home() {
                                             <div className="input-with-btn">
                                                     <form onSubmit={searchKanji}>
                                                         <input type="search" autoComplete="off" placeholder="検索" value={value} onChange={(e) => setValue(e.target.value)}/>
-                                                        <button aria-label="search">
+                                                    {/**<button aria-label="search">
                                                                 <i className="search icon"></i>           
-                                                        </button>
+                                                        </button> */}
                                                     </form>
                                             </div>
                                         </div>

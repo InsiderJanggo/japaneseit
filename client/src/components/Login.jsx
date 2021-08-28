@@ -68,6 +68,7 @@ export default function Login() {
 
     return(
        <>
+       <Header user={loginStatus} />
            <Container>      
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicUsername">
