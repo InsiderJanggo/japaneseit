@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useMemo} from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
@@ -20,17 +20,6 @@ export default function Home() {
             console.error(err);
         })
     }
-
-    /**
-     * const getFilteredRows = (rows: any[], filterKey: string) => {
-            return rows.filter((row: any) => {
-                return Object.values(row).some((s) =>
-                ("" + s).toLowerCase().includes(filterKey)
-                );
-            });
-        };
-     */
-
 
     /**
      * @param {Array} rows 

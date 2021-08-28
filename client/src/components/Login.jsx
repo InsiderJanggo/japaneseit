@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import React, {useState, useEffect} from 'react'
 import {Form, Button, Container} from 'react-bootstrap'
 import axios from 'axios'
@@ -24,9 +25,6 @@ export default function Login() {
         return true
     }
 
-    if(loginStatus) {
-        return <Header user={loginStatus} />
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -65,6 +63,10 @@ export default function Login() {
             console.error(err)
         })
     }, [])
+
+    if(loginStatus) {
+        return <Header user={loginStatus} />
+    }
 
     return(
        <>
