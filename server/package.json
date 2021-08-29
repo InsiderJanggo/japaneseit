@@ -4,7 +4,8 @@
   "description": "Simple Express Webserver",
   "main": "src/index.js",
   "scripts": {
-    "test": "nodemon ."
+    "test": "nodemon .",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
