@@ -2,6 +2,8 @@
 
 Projek Kamus bahasa Jepang sedang dalam proses
 
+![home page](https://github.com/InsiderJanggo/japaneseit/blob/main/assets/homepage.png)
+
 ## Instalasi
 
 Diharapkan harus memiliki [Nodejs](https://nodejs.org) dan [MySQL](https://www.mysql.com)
