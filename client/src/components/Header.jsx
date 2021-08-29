@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useState } from 'react';
 import {Navbar, Container, Nav} from 'react-bootstrap'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bulma/css/bulma.min.css'
@@ -7,8 +8,16 @@ var styles = {
     fontFamily: 'Kaisei Tokumin'
 }
 
-export default function Header({ user }) {
+export default function Header() {
 
+    const getUser = localStorage.getItem('user');
+    const loadUser = JSON.parse(getUser)
+    const [user, setUser] = useState(loadUser)
+
+    const destroyStorage = () => {
+        return localStorage.removeItem('user');
+    }
+    
     return(
         <Navbar style={styles} bg="light" expand="lg">
             <Container>
@@ -17,7 +26,12 @@ export default function Header({ user }) {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/">ホーム</Nav.Link>
-                    <Nav.Link href="/user">ユーザーリスト</Nav.Link>
+                    <Nav.Link href="/users">ユーザーリスト</Nav.Link>
+                    {user ?
+                        <Nav.Link href="/api/kanji/add">漢字を追加</Nav.Link>
+                    : 
+                        ""
+                    }
                 </Nav>
                 
                 </Navbar.Collapse>
@@ -25,7 +39,7 @@ export default function Header({ user }) {
                 <Navbar.Text>
                     {user ? 
                     <>  
-                            <span>{user.username}さん，<a href="http://localhost:5000/auth/logout">ログアウト</a></span> 
+                            <span>{user.username}さん，<a onClick={destroyStorage} href="http://localhost:5000/auth/logout">ログアウト</a></span> 
                     </>
                     : 
                     <>                     

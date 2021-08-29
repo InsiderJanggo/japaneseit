@@ -10,6 +10,7 @@ import Kanji from './components/Kanji';
 import Login from './components/Login';
 import Register from './components/Register';
 import User from './components/User/User'
+import UserList from './components/User/List'
 import Add from './components/Kanji/Add';
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route path="/kanji/:id">
                 <Kanji />
+            </Route> 
+            <Route path="/users">
+                <UserList />
             </Route> 
             <Route path="/user/:username">
                 <User />

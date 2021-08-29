@@ -39,13 +39,13 @@ export default function Login() {
                     setLoginStatus(res.data.message);
                 } else {
                     setLoginStatus(res.data[0]);
-                    // var users = {
-                    //     id: res.data[0].id,
-                    //     username: res.data[0].username,
-                    //     email: res.data[0].email,
-                    //     avatar: res.data[0].avatar
-                    // }
-                    // localStorage.setItem('user', JSON.stringify(users));
+                    var users = {
+                        id: res.data[0].id,
+                        username: res.data[0].username,
+                        email: res.data[0].email,
+                        avatar: res.data[0].avatar
+                    }
+                    localStorage.setItem('user', JSON.stringify(users));
                 }
             })
             .catch((err) => {
@@ -64,13 +64,9 @@ export default function Login() {
         })
     }, [])
 
-    if(loginStatus) {
-        return <Header user={loginStatus} />
-    }
-
     return(
        <>
-       <Header user={loginStatus} />
+       <Header />
            <Container>      
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicUsername">
