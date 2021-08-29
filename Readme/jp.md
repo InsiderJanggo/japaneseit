@@ -2,6 +2,8 @@
 
 開発中の日本語辞書プロジェクトです
 
+![home page](https://github.com/InsiderJanggo/japaneseit/blob/main/assets/homepage.png)
+
 ## インストール方法
 
 [Nodejs](https://nodejs.org)と[MySQL](https://www.mysql.com)を必ずインストールしてください。
