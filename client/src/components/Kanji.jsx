@@ -8,15 +8,19 @@ import {
 import onyomi from '../assets/icon_on.png'
 import kunyomi from '../assets/icon_kun.png'
 import Header from './Header';
+import './styles/Home.css'
+import Footer from './Footer'
 
 export default function Kanji() {
     let { id } = useParams();
     const [kanji, setKanji] = useState({})
+    const [kanjis, setKanjis] = useState([]);
 
     const getUser = localStorage.getItem('user')
     let user = JSON.parse(getUser);
 
     const [meaning, setMeaning] = useState('');
+    const [error, setError] = useState(null)
 
     const getOne = (id) => {
         axios.get(`http://localhost:5000/api/kanji/get/${id}`)
@@ -28,22 +32,44 @@ export default function Kanji() {
         }) 
     }
 
-    const updateMeaning = (e) => {
-        e.preventDefault();
-
-        axios.post(`http://localhost:5000/api/kanji/add/translation/${id}`, {
-            meaning: meaning
-        })
+    const randomKanjis = () => {
+        axios.get('http://localhost:5000/api/kanji/rand')
         .then((res) => {
-            console.log(res.data)
+            setKanjis(res.data)
         })
         .catch((err) => {
             console.error(err)
         })
     }
 
+    const validate = () => {
+        if(!meaning) {
+            setError('Field cant be empty')
+            return false
+        }
+
+        return true
+    }
+
+    const updateMeaning = (e) => {
+        e.preventDefault();
+        const isValid = validate()
+        if(isValid) {
+            axios.post(`http://localhost:5000/api/kanji/add/translation/${id}`, {
+                meaning: meaning
+            })
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+        }
+    }
+
     useEffect(() => {
         getOne(id)
+        randomKanjis()
         document.title = `${kanji.kanji} - 漢字辞書`;
     }, [kanji.kanji])
 
@@ -62,13 +88,16 @@ export default function Kanji() {
                     {user ? (
                             <form onSubmit={updateMeaning} style={{ marginTop: '1rem', marginLeft: '1rem' }}>
                                 <label htmlFor="meaning">意味を変える</label>
+                                <div style={{ color: 'red', fontSize: '12px' }}>
+                                        {error}
+                                </div>
                                 <input type="text" id="meaning" value={meaning} onChange={(e) => setMeaning(e.target.value)} name="meaning" placeholder="意味を入力" />
                                 <Button type="submit" variant="primary">変更</Button>
                             </form>
                         ): (
                             ""
                         )
-                        }
+                    }
                     </div>
                     <ul id="onkunList">
                         <li id="yomulist">
@@ -85,7 +114,28 @@ export default function Kanji() {
                         </li>
                     </ul>
                 </div>
+                <div id="contentsTopIndexArea">
+                    <div id="aiueoListInner">
+                        <ul className="cf">
+                        <h1 style={{ marginBottom: '2rem', fontSize: '50px' }}>他の漢字</h1>
+                        {kanjis.map((text, index) => (
+                            <li className="bdTopLine ml0" key={index}>
+                                <a href={"/kanji/" + text.id} style={{ height: "119px" }}>
+                                      <span className="hiragana">
+                                           読み方:{text.reading}
+                                      </span>
+                                      <span className="kanji">
+                                        {text.kanji}
+                                      </span>  
+                                </a>
+                            </li>
+                         ))}
+                         
+                        </ul>
+                    </div>
+                </div>
             </Container>
+            <Footer />
        </>
     )
 }

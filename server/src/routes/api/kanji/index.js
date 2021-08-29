@@ -13,6 +13,14 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/rand', (req, res) => {
+    let query = `SELECT * FROM kanji ORDER BY RAND() LIMIT 10`
+    db.query(query, (err, results) => {
+        if(err) throw err;
+        res.json(results);
+    })
+})
+
 router.use('/add', addRoutes)
 router.use('/get', getRoutes)
 
