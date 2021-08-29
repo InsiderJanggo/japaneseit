@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Alert, Form, Button } from 'react-bootstrap'
 import axios from 'axios'
+import Login from '../Login'
 
 var styles = {
     fontFamily: 'Kaisei Tokumin'
@@ -108,9 +109,15 @@ function AddForm() {
 }
 
 export default function Add() {
+    const getuser = localStorage.getItem('user');
+    let user = JSON.parse(getuser)
     return(
         <>
-            <AddForm />
+            { user ?
+                <AddForm />
+            : 
+                <Login />
+            }
         </>
     )
 }

@@ -1,6 +1,6 @@
 /* eslint-disable  */
 import React, {useState, useEffect} from 'react'
-import {Form, Button, Container} from 'react-bootstrap'
+import {Form, Button, Container, Alert} from 'react-bootstrap'
 import axios from 'axios'
 import Header from './Header';
 
@@ -10,6 +10,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     var [usernameError, setUsernameError] = useState()
     var [passwordError, setPasswordError] = useState()
+    const [status, setStatus] = useState('')
    
 
     axios.defaults.withCredentials = true;
@@ -46,10 +47,12 @@ export default function Login() {
                         avatar: res.data[0].avatar
                     }
                     localStorage.setItem('user', JSON.stringify(users));
+                    setStatus('Login Successfully')
                 }
             })
             .catch((err) => {
                 console.error(err)
+                setStatus('Login Failed')
             })
         }
     }
@@ -64,10 +67,23 @@ export default function Login() {
         })
     }, [])
 
+    if(loginStatus) {
+        setTimeout(function () { 
+            location.href = 'http://localhost:3000/'
+        }, 10 * 1000); //10 SECOND
+    }
+
     return(
        <>
        <Header />
-           <Container>      
+           <Container>    
+                {status ?  
+                    <Alert variant="success">    
+                        {status}
+                    </Alert>
+                :
+                    ""
+                }  
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicUsername">
                     <div style={{ fontSize: '12px', color: 'red' }}>

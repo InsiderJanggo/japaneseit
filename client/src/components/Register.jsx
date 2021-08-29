@@ -1,6 +1,8 @@
+/* eslint-disable  */
 import React, { useState } from 'react'
 import {Form, Button, Container, Alert} from 'react-bootstrap'
 import axios from 'axios'
+import Header from './Header';
 
 export default function Register() {
     const [username, setUsername] = useState('');
@@ -46,6 +48,7 @@ export default function Register() {
 
     return(
         <>
+         <Header/>
             <Container>
                 {status ?  
                 <Alert variant="success">    
@@ -54,8 +57,7 @@ export default function Register() {
                 :
                 ""
                 }
-               
-                 
+                   
                 <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formUsername">
                     <div style={{ fontSize: '12px', color: 'red' }}>
