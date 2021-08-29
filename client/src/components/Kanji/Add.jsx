@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Form, Button } from 'react-bootstrap'
+import { Alert, Form, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
 import Login from '../Login'
 
@@ -69,6 +69,7 @@ function AddForm() {
         : 
             ""
         }
+            <Container>
             <Form style={styles} onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>漢字:</Form.Label>
@@ -99,6 +100,7 @@ function AddForm() {
                         追加
                     </Button>
             </Form>
+            </Container>
             <div className="mb-3">
                 <Button variant="info" onClick={() => location.href = 'http://localhost:3000/'} style={styles}>
                             ←戻る
