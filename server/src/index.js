@@ -3,7 +3,7 @@ const app = require("./app");
 var db = require('./utils/database');
 const logger = require('./utils/logger');
 
-let port = process.env.PORT || 5000;
+let port = process.env.PORT || 80;
 
 db.connect((err) => {
     if(err) throw err;
