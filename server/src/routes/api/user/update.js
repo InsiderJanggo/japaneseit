@@ -1,24 +1,27 @@
 const { Router } = require("express");
-const db = require("../../utils/database");
+const db = require("../../../utils/database");
+const bcrypt = require('bcrypt');
 const router = Router();
-const bcrypt = require('bcrypt')
 
-router.post('/', (req, res) => {
+router.post('/username/:userid', (req, res) => {
     let { username, password } = req.body;
+    let { userid } = req.params;
+
+    if(!username || !password) {
+        return res.send('Field can`t be empty');
+    }
 
     let query = `
-        SELECT  * FROM users WHERE username = ? LIMIT = 1
+        UPDATE users SET username = ?, WHERE id = ?
     `
 
-    
-    db.query(query, [username], (err, results) => {
+    db.query(query, [username, userid], (err, results) => {
         if(err) throw err;
-
         if (results.length > 0) {
             bcrypt.compare(password, results[0].password, (err, response) => {
                 if(response) {
-                    req.session.user = results;
-                    //console.log(req.session.user);
+                    // req.session.user = results;
+                    // //console.log(req.session.user);
                     res.send(results);
                 }  else {
                     res.send({ message: "Wrong username/password combination!" });

@@ -29,5 +29,6 @@ router.get('/', (req, res) => {
 
 router.use('/get', require('./get'))
 router.use('/upload', require('./upload'))
+router.use('/update', require('./update'));
 
 module.exports = router;
