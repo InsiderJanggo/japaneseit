@@ -36,4 +36,24 @@ router.post('/', (req, res) => {
     })
 })
 
+router.post('/translation/:id', (req, res) => {
+    let { meaning } = req.body;
+    let { id } = req.params;
+
+    let query = `
+            UPDATE kanji SET meaning = ?, WHERE id = ?
+    `
+
+    if(!meaning) {
+        res.send('Meaning cant be empty')
+    }
+    
+    db.query(query, [meaning, id], (err, results) => {
+        if(err) throw err;
+        if(results) {
+            res.json(results);
+        }
+    })
+})
+
 module.exports = router;

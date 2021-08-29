@@ -27,6 +27,12 @@ export default function Register() {
         return true
     }
 
+    const clearState = () => {
+        setUsername('')
+        setEmail('')
+        setPassword('')
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validate()
@@ -38,6 +44,7 @@ export default function Register() {
             })
             .then((res) => {
                 setStatus('SUCCESSFULLY REGISTER')
+                clearState()
                 console.log(res.data);
             })
             .catch((err) => {

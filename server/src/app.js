@@ -9,7 +9,7 @@ var fileUpload = require('express-fileupload')
 require('dotenv').config();
 
 const corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://japaneseit.netlify.app/"],
     methods: ["GET", "POST"],
     credentials: true,
 }
@@ -19,6 +19,7 @@ app.use(cors(corsOptions));
 app.use(morgan('tiny'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'))
 
 app.use(session({
     secret: process.env.TOKEN,

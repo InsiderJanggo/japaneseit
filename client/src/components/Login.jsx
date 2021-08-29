@@ -70,7 +70,7 @@ export default function Login() {
     if(loginStatus) {
         setTimeout(function () { 
             location.href = 'http://localhost:3000/'
-        }, 10 * 1000); //10 SECOND
+        }, 10 * 100); //10 SECOND
     }
 
     return(

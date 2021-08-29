@@ -22,7 +22,7 @@ export default function UserList() {
         <>
             {users.map((person, index) => (
                 <div key={index}>
-                    {person.username}
+                    <a href={`/user/${person.username}`}>{person.username}</a>
                 </div>
             ))}
         </>

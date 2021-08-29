@@ -33,7 +33,7 @@ export default function User() {
         <Header />
             <Container>
                 <div id="user-profile">
-                    <img src={"/src/components/User/img/" + user.avatar} alt={user.id + "-avatar"} width={200} height={200} />
+                    <img src={"http://localhost:5000/img/" + user.avatar} alt={user.id + "-avatar"} width={200} height={200} />
                     <span>{user.username}</span>
                 </div>
             </Container>

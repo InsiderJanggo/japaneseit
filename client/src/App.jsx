@@ -12,6 +12,7 @@ import Register from './components/Register';
 import User from './components/User/User'
 import UserList from './components/User/List'
 import Add from './components/Kanji/Add';
+import Profile from './components/User/Profile';
 
 function App() {
   
@@ -37,6 +38,9 @@ function App() {
             <Route path="/login">
                 <Login />
             </Route>
+            <Route path="/profile">
+                <Profile />
+            </Route> 
             <Route path="/api/kanji/add">
                 <Add />
             </Route>

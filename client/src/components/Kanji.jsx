@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Container} from 'react-bootstrap'
+import {Button, Container} from 'react-bootstrap'
 import './styles/Kanji.css'
 import axios from 'axios'
 import {
@@ -13,6 +13,11 @@ export default function Kanji() {
     let { id } = useParams();
     const [kanji, setKanji] = useState({})
 
+    const getUser = localStorage.getItem('user')
+    let user = JSON.parse(getUser);
+
+    const [meaning, setMeaning] = useState('');
+
     const getOne = (id) => {
         axios.get(`http://localhost:5000/api/kanji/get/${id}`)
         .then((res) => {
@@ -21,6 +26,20 @@ export default function Kanji() {
         .catch(err => {
             console.error(err);
         }) 
+    }
+
+    const updateMeaning = (e) => {
+        e.preventDefault();
+
+        axios.post(`http://localhost:5000/api/kanji/add/translation/${id}`, {
+            meaning: meaning
+        })
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
     }
 
     useEffect(() => {
@@ -37,8 +56,20 @@ export default function Kanji() {
                         {kanji.kanji}
                     </p>
                     <p id="imi" className="Chiyaji">
-                        意味：{kanji.meaning}
+                        意味：{kanji.meaning}    
                     </p>
+                    <div>
+                    {user ? (
+                            <form onSubmit={updateMeaning} style={{ marginTop: '1rem', marginLeft: '1rem' }}>
+                                <label htmlFor="meaning">意味を変える</label>
+                                <input type="text" id="meaning" value={meaning} onChange={(e) => setMeaning(e.target.value)} name="meaning" placeholder="意味を入力" />
+                                <Button type="submit" variant="primary">変更</Button>
+                            </form>
+                        ): (
+                            ""
+                        )
+                        }
+                    </div>
                     <ul id="onkunList">
                         <li id="yomulist">
                             <p className="onKunYomi">
