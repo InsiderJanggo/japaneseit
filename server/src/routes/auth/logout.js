@@ -11,8 +11,7 @@ router.get('/', (req, res) => {
                 message: err
             })
         } else {
-            //return res.redirect('http://localhost:3000/');
-            return req.originalUrl()
+            return res.redirect('http://localhost:3000/');
         }
     });
 })

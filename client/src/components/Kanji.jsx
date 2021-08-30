@@ -72,7 +72,7 @@ export default function Kanji() {
     const deleteKanji = () => {
             axios.post(`http://localhost:5000/api/kanji/delete/${id}`)
             .then(res => {
-                console.log(res.data.message)
+                console.log(res.data)
             })
             .catch((err) => {
                 console.error(err);

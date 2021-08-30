@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
                 db.query(query, [username, email, hash], (err, results) => {
                     if(err) throw err;
                     res.send(results);
+                    res.redirect('http://localhost:3000/login')
                 })
             }
         })
