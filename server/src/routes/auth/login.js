@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
     let { username, password } = req.body;
 
     let query = `
-        SELECT  * FROM users WHERE username = ? LIMIT = 1
+        SELECT  * FROM users WHERE username = ?
     `
 
     

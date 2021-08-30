@@ -4,6 +4,7 @@ const router = Router();
 
 const addRoutes  = require('./add')
 const getRoutes = require('./get')
+const deleteRoutes = require('./delete')
 
 router.get('/', (req, res) => {
     let query = `SELECT * FROM kanji`
@@ -21,7 +22,9 @@ router.get('/rand', (req, res) => {
     })
 })
 
+router.use('/delete', deleteRoutes)
 router.use('/add', addRoutes)
 router.use('/get', getRoutes)
+
 
 module.exports = router;

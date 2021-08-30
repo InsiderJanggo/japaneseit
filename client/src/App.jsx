@@ -13,6 +13,7 @@ import User from './components/User/User'
 import UserList from './components/User/List'
 import Add from './components/Kanji/Add';
 import Profile from './components/User/Profile';
+import KanaHome from './components/Kana/Home';
 
 function App() {
   
@@ -43,6 +44,9 @@ function App() {
             </Route> 
             <Route path="/api/kanji/add">
                 <Add />
+            </Route>
+            <Route path="/kana">
+                <KanaHome />
             </Route>
             </Switch>
         </Router>

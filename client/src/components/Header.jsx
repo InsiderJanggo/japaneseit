@@ -26,7 +26,7 @@ export default function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/">ホーム</Nav.Link>
-                    <Nav.Link href="/users">ユーザーリスト</Nav.Link>
+                    <Nav.Link href="/kana">仮名リスト</Nav.Link>
                     {user ? (
                         <>
                             <Nav.Link href="/api/kanji/add">漢字を追加</Nav.Link>

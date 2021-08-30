@@ -10,6 +10,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     var [usernameError, setUsernameError] = useState()
     var [passwordError, setPasswordError] = useState()
+    const [variant, setVariant] = useState('')
     const [status, setStatus] = useState('')
    
 
@@ -47,11 +48,13 @@ export default function Login() {
                         avatar: res.data[0].avatar
                     }
                     localStorage.setItem('user', JSON.stringify(users));
+                    setVariant('success')
                     setStatus('Login Successfully')
                 }
             })
             .catch((err) => {
                 console.error(err)
+                setVariant('danger')
                 setStatus('Login Failed')
             })
         }
@@ -78,7 +81,7 @@ export default function Login() {
        <Header />
            <Container>    
                 {status ?  
-                    <Alert variant="success">    
+                    <Alert variant={variant}>    
                         {status}
                     </Alert>
                 :

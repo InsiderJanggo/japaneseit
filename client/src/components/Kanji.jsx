@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Button, Container} from 'react-bootstrap'
+import { Button, Container, Alert, Modal } from 'react-bootstrap'
 import './styles/Kanji.css'
 import axios from 'axios'
 import {
@@ -15,6 +15,8 @@ export default function Kanji() {
     let { id } = useParams();
     const [kanji, setKanji] = useState({})
     const [kanjis, setKanjis] = useState([]);
+
+    const [showDeleteForm ,setShowDeleteForm] = useState(false);
 
     const getUser = localStorage.getItem('user')
     let user = JSON.parse(getUser);
@@ -67,6 +69,16 @@ export default function Kanji() {
         }
     }
 
+    const deleteKanji = () => {
+            axios.post(`http://localhost:5000/api/kanji/delete/${id}`)
+            .then(res => {
+                console.log(res.data.message)
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+    }
+
     useEffect(() => {
         getOne(id)
         randomKanjis()
@@ -86,14 +98,38 @@ export default function Kanji() {
                     </p>
                     <div>
                     {user ? (
-                            <form onSubmit={updateMeaning} style={{ marginTop: '1rem', marginLeft: '1rem' }}>
-                                <label htmlFor="meaning">意味を変える</label>
-                                <div style={{ color: 'red', fontSize: '12px' }}>
-                                        {error}
-                                </div>
-                                <input type="text" id="meaning" value={meaning} onChange={(e) => setMeaning(e.target.value)} name="meaning" placeholder="意味を入力" />
-                                <Button type="submit" variant="primary">変更</Button>
-                            </form>
+                           <>
+                                 <form onSubmit={updateMeaning} style={{ marginTop: '1rem', marginLeft: '1rem' }}>
+                                    <label htmlFor="meaning">意味を変える</label>
+                                    {error ? (
+                                        <Alert variant="danger">
+                                            {error}
+                                        </Alert>
+                                    ): (
+                                        ""
+                                    )}
+                                    <input type="text" id="meaning" value={meaning} onChange={(e) => setMeaning(e.target.value)} name="meaning" placeholder="意味を入力" />
+                                    <Button type="submit" variant="primary">変更</Button>
+                                </form>
+                                <Button type="button" variant="danger" onClick={() => setShowDeleteForm(true)}>漢字を削除</Button>
+                                {showDeleteForm? (
+                                    <>
+                                        <Modal show={() => setShowDeleteForm(true)} onHide={() => setShowDeleteForm(false)}>
+                                            <Modal.Title>本当でございますか？</Modal.Title>
+                                            <Modal.Body>
+                                                <form onSubmit={deleteKanji}>
+                                                        <Button type="button" variant="danger">漢字を削除</Button>
+                                                </form>
+                                            </Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="primary" onClick={() => setShowDeleteForm(false)}>キャンセル</Button>
+                                            </Modal.Footer>
+                                        </Modal>
+                                    </>
+                                ): (
+                                    ""
+                                )}
+                           </>
                         ): (
                             ""
                         )

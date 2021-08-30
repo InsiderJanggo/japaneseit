@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Login from '../Login'
 import axios from 'axios'
-import { Container, Form, Button, Row, Col, Image, Alert } from 'react-bootstrap'
+import { Container, Form, Button, Row, Col, Image, Alert, Modal } from 'react-bootstrap'
 import Header from '../Header'
 
 export default function Profile() {
@@ -13,18 +13,30 @@ export default function Profile() {
 	const [isFilePicked, setIsFilePicked] = useState(false);
     const [showError, setShowError] = useState(false)
     const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [showPasswordForm, setShowPasswordForm] = useState(false);
     const [error, setError] = useState('')
 
     if(!user) {
         return <Login />
     }
 
-    const validate = () => {
+    const validateUpload = () => {
         if(!selectedFile) {
             setError('Please Upload A Avatar')
             setShowError(true)
             return false
         }
+        return true
+    }
+
+    const validateUsername = () => {
+        if(!username) {
+            setError('Username cant be empty')
+            setShowError(true)
+            return false
+        }
+
         return true
     }
 
@@ -39,7 +51,7 @@ export default function Profile() {
     const handleSubmit = () => {
         const formdata = new FormData()
         formdata.append('avatar', selectedFile)
-        const isValid = validate()
+        const isValid = validateUpload()
 
         if(isValid) {
             axios.post(`http://localhost:5000/api/user/upload/avatar/${user.id}`, formdata)
@@ -49,6 +61,18 @@ export default function Profile() {
             .catch((err) => {
                 console.error(err)
             })
+        }
+    }
+
+    const handleUsernameChange = (e) => {
+        const isValid = validateUsername()
+
+        if(isValid) {
+            axios.post(`http://localhost:5000/api/user/update/username/${user.id}`, {
+                username: username,
+                password: password
+            })
+            setShowPasswordForm(false)
         }
     }
 
@@ -64,15 +88,22 @@ export default function Profile() {
                 : (
                     ""
                 )}
+
+                
+               
+
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Upload Your Avatar</Form.Label>
                     <Form.Control type="file" name="avatar" accept="image/*" onChange={handleChange}  />
                 </Form.Group>
                 <Container>
+               <Form>
                     <Form.Group controlId="formFile" className="mb-3">
-                        <Form.Label>Update Your Username</Form.Label>
-                        <Form.Control type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}  />
+                            <Form.Label>Update Your Username</Form.Label>
+                            <Form.Control className="mb-3" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}  />
+                            <Button onClick={() => setShowPasswordForm(true)}>Update</Button>
                     </Form.Group>
+               </Form>
                 </Container>
                 {selectedFile ?
                     <div>
@@ -83,11 +114,8 @@ export default function Profile() {
                         <p>Size in bytes: {selectedFile.size}</p>
 
                         <p>
-
                             lastModifiedDate:{' '}
-
                             {selectedFile.lastModified}
-
                         </p>
 
                     </div>
@@ -121,6 +149,24 @@ export default function Profile() {
                         ""
                     )}
                 </div>
+
+                <Modal show={showPasswordForm} onHide={() => setShowPasswordForm(false)}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Please Verified Your Password</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form.Label htmlFor="password">Enter your password</Form.Label>
+                        <Form.Control className="mb-3" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}  />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={() => setShowPasswordForm(false)}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleUsernameChange}>
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
             </Container>
         </>
     )
