@@ -1,0 +1,37 @@
+{
+  "name": "express-webserver",
+  "version": "1.0.0",
+  "description": "Simple Express Webserver",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nodemon .",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Real-Penguin-Private-Orgs/express-webserver.git"
+  },
+  "author": "Wisly Ong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Real-Penguin-Private-Orgs/express-webserver/issues"
+  },
+  "homepage": "https://github.com/Real-Penguin-Private-Orgs/express-webserver#readme",
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "fs": "0.0.1-security",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "util": "^0.12.4"
+  }
+}
