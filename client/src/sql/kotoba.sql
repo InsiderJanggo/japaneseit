@@ -1,6 +1,0 @@
-CREATE TABLE `kotoba`(
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `word` VARCHAR(255) NOT NULL,
-    `at_kanji` INT NOT NULL,
-    PRIMARY KEY (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;

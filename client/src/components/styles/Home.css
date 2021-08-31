@@ -1,0 +1,121 @@
+#contentsTopIndexArea #aiueoListInner {
+    margin-top: 100px;
+    font-family: 'Kaisei Tokumin';
+}
+.cf {
+    zoom: 1;
+    width: auto;
+    overflow: hidden;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li.bdTopLine {
+    border-top: 1px solid #a3a3a3;
+    list-style-type: none;
+}
+#home-page header {
+    background-color: var(--accent);
+    padding-top: 140px;
+    padding-bottom: 3rem;
+    color: #fff;
+    font-family: 'Kaisei Tokumin';
+}
+
+#home-page header h1 {
+    font-weight: 900;
+    font-size: 36px;
+    color: #000000;
+}
+
+#home-page header h2 {
+    margin-top: 10px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.relative {
+    position: relative;
+}
+
+.search-wrapper {
+    background-color: #fff;
+    border-radius: 4px;
+    max-width: 640px;
+}
+
+.input-with-btn {
+    border-radius: inherit;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    background-color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+input-with-btn input {
+    font: inherit;
+    border-radius: inherit;
+    background-color: #fff;
+    color: #000000;
+    flex: 1;
+    padding: 1rem;
+}
+
+input {
+    border-radius: 100px;
+    font-family: 'Kaisei Tokumin';
+}
+
+.input-with-btn button {
+    font: inherit;
+    border-radius: inherit;
+    padding: 0 1rem;
+    color: #000000;
+    border: none;
+    background-color: #fff;
+    text-transform: uppercase;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+img, video {
+    height: auto;
+    max-width: 100%;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li {
+    float: left;
+    width: 148px;
+    margin-left: 55px;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li a span.kanji {
+    font-size: 271%;
+    margin-top: 20px;
+}
+
+#contentsTopIndexArea #aiueoListInner ul li a span {
+    display: block;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: #000000;
+}
+
+a:link {
+    outline: none;
+}
+
+a:link {
+    color: #000000;
+}
