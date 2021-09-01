@@ -14,6 +14,9 @@ import UserList from './components/User/List'
 import Add from './components/Kanji/Add';
 import Profile from './components/User/Profile';
 import KanaHome from './components/Kana/Home';
+import MachiHome from './components/Machi/Home';
+import AddMachi from './components/Machi/Add';
+import Machi from './components/Machi/Machi';
 
 function App() {
   
@@ -27,6 +30,9 @@ function App() {
             <Route path="/kanji/:id">
                 <Kanji />
             </Route> 
+            <Route path="/machi/:id">
+                <Machi />
+            </Route>
             <Route path="/users">
                 <UserList />
             </Route> 
@@ -45,8 +51,14 @@ function App() {
             <Route path="/api/kanji/add">
                 <Add />
             </Route>
+            <Route path="/api/machi/add">
+                <AddMachi />
+            </Route>
             <Route path="/kana">
                 <KanaHome />
+            </Route>
+            <Route path="/machi">
+                <MachiHome />
             </Route>
             </Switch>
         </Router>

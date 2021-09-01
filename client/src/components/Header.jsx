@@ -27,10 +27,12 @@ export default function Header() {
                 <Nav className="me-auto">
                     <Nav.Link href="/">ホーム</Nav.Link>
                     <Nav.Link href="/kana">仮名リスト</Nav.Link>
+                    <Nav.Link href="/machi">町リスト</Nav.Link>
                     {user ? (
                         <>
                             <Nav.Link href="/api/kanji/add">漢字を追加</Nav.Link>
                             <Nav.Link href="/profile">アカウント設定</Nav.Link>
+                            <Nav.Link href="/api/machi/add">町を追加</Nav.Link>
                         </>
                     )
                     : 

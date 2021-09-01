@@ -11,7 +11,8 @@ import {
     Image, 
     Alert, 
     Modal, 
-    ProgressBar 
+    ProgressBar,
+    FloatingLabel
 } from 'react-bootstrap'
 import Header from '../Header'
 
@@ -179,23 +180,36 @@ export default function Profile() {
                     </Form.Group>
                </Form>
                 </Container>
-                {selectedFile ?
-                    <div>
-                        <p>Filename: {selectedFile.name}</p>
 
-                        <p>Filetype: {selectedFile.type}</p>
+                <Container>
+                    <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                            <Form.Control
+                                as="textarea"
+                                placeholder="Leave a comment here"
+                                style={{ height: '100px' }}
+                            />
+                    </FloatingLabel>
+                </Container>
 
-                        <p>Size in bytes: {selectedFile.size}</p>
+                <Container>
+                    {selectedFile ?
+                        <div>
+                            <p>Filename: {selectedFile.name}</p>
 
-                        <p>
-                            lastModifiedDate:{' '}
-                            {selectedFile.lastModified}
-                        </p>
+                            <p>Filetype: {selectedFile.type}</p>
 
-                    </div>
-                : (
-                    <p>Select a file to show details</p>
-                )}
+                            <p>Size in bytes: {selectedFile.size}</p>
+
+                            <p>
+                                lastModifiedDate:{' '}
+                                {selectedFile.lastModified}
+                            </p>
+
+                        </div>
+                    : (
+                        <p style={{ marginTop: '2rem' }}>Select a file to show details</p>
+                    )}
+                </Container>
                 
                 
 
